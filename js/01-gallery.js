@@ -53,7 +53,7 @@ function handlerZoom(evt) {
 //     const instance = basicLightbox.create(`
 //     <img src="${evt.target.dataset.source}" width="800" height="600">
 // `)
-    
+    document.removeEventListenerEventListener('keydown', handlerKey);   
     instance.show()
   
     function handlerKey(e) {
