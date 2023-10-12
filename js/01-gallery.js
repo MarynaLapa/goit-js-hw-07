@@ -47,18 +47,18 @@ function handlerZoom(evt) {
         </div>
     `, {
         onShow: (instance) => {
-            document.addEventListener('keydown', handlerKey);   
+            document.addEventListener('keydown', handlerKey);  
         },
     })
 //     const instance = basicLightbox.create(`
 //     <img src="${evt.target.dataset.source}" width="800" height="600">
 // `)
-    document.removeEventListenerEventListener('keydown', handlerKey);   
+    
     instance.show()
   
     function handlerKey(e) {
         // console.log(e)
-        if (e.code === 'Escape') {
+        if (e.code === 'Escape') {   
             instance.close() 
         }
     }
