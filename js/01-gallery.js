@@ -26,6 +26,8 @@ function createMarkup(arr) {
 galleryList.insertAdjacentHTML('afterbegin', createMarkup(galleryItems));
 
 galleryList.addEventListener('click', handlerZoom);
+// const img = document.querySelector('.gallery__image');
+
 
 function handlerZoom(evt) {
     evt.preventDefault();
@@ -33,7 +35,7 @@ function handlerZoom(evt) {
     if (!evt.target.classList.contains('gallery__image')) {
         return;
     }
-    // console.log(evt.target.dataset.source)
+    console.log(evt.target)
 
     // if (evt.target === evt.currentTarget) {
     //     return;
@@ -47,19 +49,30 @@ function handlerZoom(evt) {
         </div>
     `, {
         onShow: (instance) => {
-            document.addEventListener('keydown', handlerKey);  
+            document.addEventListener('keydown', handlerKey); 
+             
         },
+
+        onClose: (instance) => {
+            document.removeEventListener('keydown', handlerKey);    
+            
+        }
     })
-//     const instance = basicLightbox.create(`
-//     <img src="${evt.target.dataset.source}" width="800" height="600">
-// `)
     
     instance.show()
-  
+    
+    const closeClick = instance.element().querySelector('img');
+    // console.log(closeClick);
+    closeClick.addEventListener('click', handlerClose);
+
+    function handlerClose() {
+         instance.close() 
+    }
+    
     function handlerKey(e) {
         // console.log(e)
         if (e.code === 'Escape') {   
-            instance.close() 
+            instance.close()  
         }
     }
 }
